@@ -1,5 +1,7 @@
 "use client";
 
+import AnimatedSection from "./AnimatedSection";
+
 const services = [
   {
     name: "Full Detail",
@@ -45,7 +47,7 @@ export default function Services() {
   return (
     <section id="services" className="relative bg-vice-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 text-center">
+        <AnimatedSection className="mb-16 text-center">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-vice-cyan">
             What We Offer
           </p>
@@ -56,66 +58,69 @@ export default function Services() {
             We come to you. Home, apartment, office, or job site — we handle
             every detail.
           </p>
-        </div>
+        </AnimatedSection>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.name}
-              className={`relative rounded-2xl border p-8 transition-all duration-300 hover:border-vice-pink/50 hover:shadow-[0_0_30px_rgba(255,45,122,0.1)] ${
-                service.popular
-                  ? "border-vice-pink/40 bg-vice-card"
-                  : "border-vice-border bg-vice-card/50"
-              }`}
-            >
-              {service.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-vice-pink px-4 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_15px_rgba(255,45,122,0.5)]">
-                  Most Popular
-                </span>
-              )}
-              <h3 className="mb-2 text-2xl font-bold text-white font-[family-name:var(--font-syne)]">
-                {service.name}
-              </h3>
-              <p className="mb-6 text-sm text-vice-muted">{service.desc}</p>
-              <div className="space-y-3">
-                {service.prices.map((p) => (
-                  <div
-                    key={p.vehicle}
-                    className="flex items-center justify-between border-b border-vice-border pb-3"
-                  >
-                    <span className="text-white/80">{p.vehicle}</span>
-                    <span className="text-lg font-bold text-vice-cyan">
-                      {p.price}
-                    </span>
-                  </div>
-                ))}
+          {services.map((service, i) => (
+            <AnimatedSection key={service.name} delay={i * 0.15}>
+              <div
+                className={`relative h-full rounded-2xl border p-8 transition-all duration-300 hover:border-vice-pink/50 hover:shadow-[0_0_30px_rgba(255,45,122,0.1)] ${
+                  service.popular
+                    ? "border-vice-pink/40 bg-vice-card"
+                    : "border-vice-border bg-vice-card/50"
+                }`}
+              >
+                {service.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-vice-pink px-4 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_15px_rgba(255,45,122,0.5)]">
+                    Most Popular
+                  </span>
+                )}
+                <h3 className="mb-2 text-2xl font-bold text-white font-[family-name:var(--font-syne)]">
+                  {service.name}
+                </h3>
+                <p className="mb-6 text-sm text-vice-muted">{service.desc}</p>
+                <div className="space-y-3">
+                  {service.prices.map((p) => (
+                    <div
+                      key={p.vehicle}
+                      className="flex items-center justify-between border-b border-vice-border pb-3"
+                    >
+                      <span className="text-white/80">{p.vehicle}</span>
+                      <span className="text-lg font-bold text-vice-cyan">
+                        {p.price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
 
         {/* Add-ons */}
-        <div className="mt-16 rounded-2xl border border-vice-border bg-vice-card/30 p-8">
-          <h3 className="mb-6 text-center text-xl font-bold text-white font-[family-name:var(--font-syne)]">
-            Add-Ons
-          </h3>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {addOns.map((addon) => (
-              <div
-                key={addon.name}
-                className="flex items-center justify-between rounded-lg bg-vice-bg px-5 py-3 border border-vice-border/50"
-              >
-                <span className="text-sm text-white/80">{addon.name}</span>
-                <span className="font-semibold text-vice-pink">
-                  {addon.price}
-                </span>
-              </div>
-            ))}
+        <AnimatedSection className="mt-16">
+          <div className="rounded-2xl border border-vice-border bg-vice-card/30 p-8">
+            <h3 className="mb-6 text-center text-xl font-bold text-white font-[family-name:var(--font-syne)]">
+              Add-Ons
+            </h3>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {addOns.map((addon) => (
+                <div
+                  key={addon.name}
+                  className="flex items-center justify-between rounded-lg bg-vice-bg px-5 py-3 border border-vice-border/50"
+                >
+                  <span className="text-sm text-white/80">{addon.name}</span>
+                  <span className="font-semibold text-vice-pink">
+                    {addon.price}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-center text-xs text-vice-muted">
+              Multi-car discount: $15–$25 off second vehicle at same location & time.
+            </p>
           </div>
-          <p className="mt-4 text-center text-xs text-vice-muted">
-            Multi-car discount: $15–$25 off second vehicle at same location & time.
-          </p>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
