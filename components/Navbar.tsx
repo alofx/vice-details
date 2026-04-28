@@ -13,8 +13,7 @@ export default function Navbar() {
 
   const links = [
     { label: "Services", href: "#services" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Reviews", href: "#reviews" },
+    { label: "Process", href: "#how-it-works" },
     { label: "Book", href: "#book" },
   ];
 
@@ -31,14 +30,14 @@ export default function Navbar() {
           href="#hero"
           className="text-2xl font-bold tracking-tight text-white font-[family-name:var(--font-syne)]"
         >
-          VICE<span className="text-vice-accent">.</span>
+          VICE<span className="text-vice-pink">.</span>
         </a>
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium uppercase tracking-wider text-white/70 transition-colors hover:text-vice-accent"
+              className="text-sm font-medium uppercase tracking-wider text-white/70 transition-colors hover:text-vice-cyan"
             >
               {link.label}
             </a>
@@ -46,7 +45,7 @@ export default function Navbar() {
         </div>
         <a
           href="#book"
-          className="rounded-full bg-vice-accent px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-vice-bg transition-all hover:bg-vice-accent-light"
+          className="rounded-full bg-vice-pink px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-vice-pink-light hover:shadow-[0_0_20px_rgba(255,45,122,0.4)]"
         >
           Book Now
         </a>

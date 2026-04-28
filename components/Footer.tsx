@@ -11,7 +11,7 @@ export default function Footer() {
               href="#hero"
               className="text-2xl font-bold tracking-tight text-white font-[family-name:var(--font-syne)]"
             >
-              VICE<span className="text-vice-accent">.</span>
+              VICE<span className="text-vice-pink">.</span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-vice-muted">
               Premium mobile car detailing across South Florida. We bring the
@@ -41,7 +41,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:3058536101"
-                  className="transition-colors hover:text-vice-accent"
+                  className="transition-colors hover:text-vice-pink"
                 >
                   (305) 853-6101
                 </a>

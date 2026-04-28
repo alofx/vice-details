@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-vice-bg: #0a0a0f;
-  --color-vice-card: #13131a;
-  --color-vice-border: #1e1e2e;
-  --color-vice-accent: #c8a45c;
-  --color-vice-accent-light: #e4c67a;
-  --color-vice-text: #f5f5f5;
-  --color-vice-muted: #8a8a9a;
+  --color-vice-bg: #080810;
+  --color-vice-card: #0f0f1a;
+  --color-vice-border: #1a1a30;
+  --color-vice-pink: #ff2d7a;
+  --color-vice-pink-light: #ff6b9d;
+  --color-vice-cyan: #00f0ff;
+  --color-vice-cyan-dim: #00b8c4;
+  --color-vice-teal: #00d4aa;
+  --color-vice-text: #f0f0f5;
+  --color-vice-muted: #8a8aa0;
 }
 
 html {
@@ -23,16 +26,14 @@ body {
 }
 
 ::selection {
-  background-color: rgba(200, 164, 92, 0.3);
+  background-color: rgba(255, 45, 122, 0.3);
   color: #fff;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

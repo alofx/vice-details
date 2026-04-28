@@ -46,7 +46,7 @@ export default function Services() {
     <section id="services" className="relative bg-vice-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 text-center">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-vice-accent">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-vice-cyan">
             What We Offer
           </p>
           <h2 className="text-4xl font-bold text-white md:text-5xl font-[family-name:var(--font-syne)]">
@@ -62,14 +62,14 @@ export default function Services() {
           {services.map((service) => (
             <div
               key={service.name}
-              className={`relative rounded-2xl border p-8 transition-all duration-300 hover:border-vice-accent/50 ${
+              className={`relative rounded-2xl border p-8 transition-all duration-300 hover:border-vice-pink/50 hover:shadow-[0_0_30px_rgba(255,45,122,0.1)] ${
                 service.popular
-                  ? "border-vice-accent/40 bg-vice-card"
+                  ? "border-vice-pink/40 bg-vice-card"
                   : "border-vice-border bg-vice-card/50"
               }`}
             >
               {service.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-vice-accent px-4 py-1 text-xs font-bold uppercase tracking-wider text-vice-bg">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-vice-pink px-4 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_15px_rgba(255,45,122,0.5)]">
                   Most Popular
                 </span>
               )}
@@ -84,7 +84,7 @@ export default function Services() {
                     className="flex items-center justify-between border-b border-vice-border pb-3"
                   >
                     <span className="text-white/80">{p.vehicle}</span>
-                    <span className="text-lg font-bold text-vice-accent">
+                    <span className="text-lg font-bold text-vice-cyan">
                       {p.price}
                     </span>
                   </div>
@@ -103,18 +103,17 @@ export default function Services() {
             {addOns.map((addon) => (
               <div
                 key={addon.name}
-                className="flex items-center justify-between rounded-lg bg-vice-bg px-5 py-3"
+                className="flex items-center justify-between rounded-lg bg-vice-bg px-5 py-3 border border-vice-border/50"
               >
                 <span className="text-sm text-white/80">{addon.name}</span>
-                <span className="font-semibold text-vice-accent">
+                <span className="font-semibold text-vice-pink">
                   {addon.price}
                 </span>
               </div>
             ))}
           </div>
           <p className="mt-4 text-center text-xs text-vice-muted">
-            Multi-car discount: $15–$25 off second vehicle at same location &
-            time.
+            Multi-car discount: $15–$25 off second vehicle at same location & time.
           </p>
         </div>
       </div>
