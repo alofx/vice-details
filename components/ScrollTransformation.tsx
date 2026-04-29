@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -10,6 +10,7 @@ export default function ScrollTransformation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -17,25 +18,45 @@ export default function ScrollTransformation() {
     const text = textRef.current;
     if (!video || !container) return;
 
+    // Wait for video metadata before setting up scroll
     const setupScroll = () => {
       const duration = video.duration || 13;
+      setVideoReady(true);
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container,
           start: "top top",
           end: "bottom top",
-          scrub: 1,
+          scrub: 1, // Smooth 1-second catch-up for buttery feel
+          onLeaveBack: () => {
+            // Reset video to start when scrolling back to top
+            video.currentTime = 0;
+          },
         },
       });
 
-      // Scrub video from start to end
-      tl.to(video, { currentTime: duration, ease: "none" }, 0);
+      // Animate video from start to end using fromTo for precise control
+      tl.fromTo(
+        video,
+        { currentTime: 0 },
+        { currentTime: duration, ease: "none" },
+        0
+      );
 
       // Fade in text at start
       if (text) {
-        tl.fromTo(text, { opacity: 0, y: 50 }, { opacity: 1, y: 0, ease: "power2.out" }, 0);
-        tl.to(text, { opacity: 0, y: -50, ease: "power2.in" }, 0.7);
+        tl.fromTo(
+          text,
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, ease: "power2.out" },
+          0
+        );
+        tl.to(
+          text,
+          { opacity: 0, y: -50, ease: "power2.in" },
+          0.7
+        );
       }
     };
 
@@ -67,6 +88,7 @@ export default function ScrollTransformation() {
           muted
           playsInline
           preload="auto"
+          style={{ opacity: videoReady ? 1 : 0, transition: "opacity 0.5s" }}
         />
 
         {/* Gradient Overlays */}
@@ -76,7 +98,7 @@ export default function ScrollTransformation() {
         {/* Floating Text */}
         <div
           ref={textRef}
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center pointer-events-none"
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center pointer-events-none opacity-0"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-vice-cyan">
             Watch the Transformation
