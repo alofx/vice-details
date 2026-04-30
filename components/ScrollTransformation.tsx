@@ -84,7 +84,7 @@ export default function ScrollTransformation() {
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"
-          src="/videos/hero-scroll.mp4"
+          src="/videos/1st-web.mp4"
           muted
           playsInline
           preload="auto"
